@@ -87,4 +87,4 @@ Given I am on the additional data page [http://www.automationpractice.pl/index.p
 When all required fields are filled out correctly  
 and the "Register" button is clicked  
 Then the user's logged-in area is loaded [http://www.automationpractice.pl/index.php?controller=my-account](http://www.automationpractice.pl/index.php?controller=my-account)  
-and a message is displayed: "Your account has been created"
+and a success message of registration is displayed: "Your account has been created"
