@@ -17,8 +17,8 @@ Then an error message is displayed: "Invalid email address"
 
 ## AUTHENTICATION FAILURE
 Given I am on the login page [http://www.automationpractice.pl/index.php?controller=authentication&back=my-account](http://www.automationpractice.pl/index.php?controller=authentication&back=my-account)  
-When the Email address field is filled correctly  
-and the Password field is filled correctly  
+When the Email address field is filled with unregistered email  
+and the Password field is filled
 and the "Sign in" button is clicked  
 Then an error message is displayed: "Authentication failed"
 
