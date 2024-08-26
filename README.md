@@ -63,7 +63,7 @@ Then an error message is displayed: "An account using this email address has alr
 Given I am on the login page [http://www.automationpractice.pl/index.php?controller=authentication&back=my-account](http://www.automationpractice.pl/index.php?controller=authentication&back=my-account)  
 When the Email address field is filled with a valid email  
 and the "Create an account" button is clicked  
-Then the additional data form is loaded [http://www.automationpractice.pl/index.php?controller=authentication&back=addresses#account-creation](http://www.automationpractice.pl/index.php?controller=authentication&back=addresses#account-creation)
+Then the additional data form is loaded [http://www.automationpractice.pl/index.php?controller=authentication&back=my-account#account-creation](http://www.automationpractice.pl/index.php?controller=authentication&back=my-account#account-creation)
 
 ## MISSING REQUIRED FIELDS
 Given I am on the additional data page [http://www.automationpractice.pl/index.php?controller=authentication&back=addresses#account-creation](http://www.automationpractice.pl/index.php?controller=authentication&back=addresses#account-creation)  
