@@ -37,7 +37,7 @@ Then I am redirected to login page [http://www.automationpractice.pl/index.php?c
 ## LOGOUT
 Given I am an authenticated user  
 When the "Sign out" button is clicked  
-Then the user is redirected to the login page [http://www.automationpractice.pl/index.php?controller=authentication&back=addresses](http://www.automationpractice.pl/index.php?controller=authentication&back=addresses)
+Then I am redirected to the login page [http://www.automationpractice.pl/index.php?controller=authentication&back=addresses](http://www.automationpractice.pl/index.php?controller=authentication&back=addresses)
 
 # REGISTRATION FEATURE
 
