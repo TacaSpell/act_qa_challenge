@@ -84,4 +84,20 @@ describe("Login feature", () => {
             });
         }
     );
+
+    describe("Logout", { testIsolation: false }, () => {
+        it("Given I am an authenticated user", () => {
+            cy.visit(LOGIN_URL);
+            cy.get("#email").type(Cypress.env("LOGIN_EMAIL"));
+            cy.get("#passwd").type(Cypress.env("LOGIN_PASSWORD"));
+            cy.get("#SubmitLogin > span").click();
+            cy.url().should("include", "index.php?controller=my-account");
+        });
+        it('When the "Sign out" button is clicked', () => {
+            cy.get(".logout").click();
+        });
+        it("Then I am redirected to the login page", () => {
+            cy.url().should("equal", LOGIN_URL);
+        });
+    });
 });
