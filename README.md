@@ -29,10 +29,10 @@ and the Password field is filled correctly
 and the "Sign in" button is clicked  
 Then the user's logged-in area is loaded [http://www.automationpractice.pl/index.php?controller=my-account](http://www.automationpractice.pl/index.php?controller=my-account)
 
-## ACCESS LOGGED-IN AREA URL WITHOUT AUTHENTICATION
+## REDIRECT UNAUTHENTICATED USER
 Given I am an unauthenticated user  
-When accessing the URL [http://www.automationpractice.pl/index.php?controller=my-account](http://www.automationpractice.pl/index.php?controller=my-account)  
-Then the login page is loaded [http://www.automationpractice.pl/index.php?controller=authentication&back=my-account](http://www.automationpractice.pl/index.php?controller=authentication&back=my-account)
+When accessing the logged-in area by URL [http://www.automationpractice.pl/index.php?controller=my-account](http://www.automationpractice.pl/index.php?controller=my-account)  
+Then I am redirected to login page [http://www.automationpractice.pl/index.php?controller=authentication&back=my-account](http://www.automationpractice.pl/index.php?controller=authentication&back=my-account)
 
 ## LOGOUT
 Given I am an authenticated user  

@@ -3,6 +3,8 @@ import { faker } from "@faker-js/faker";
 describe("Login feature", () => {
     const LOGIN_URL =
         "http://www.automationpractice.pl/index.php?controller=authentication&back=my-account";
+    const LOGGED_URL =
+        "http://www.automationpractice.pl/index.php?controller=my-account";
     beforeEach(() => {
         cy.clearAllCookies();
     });
@@ -67,4 +69,19 @@ describe("Login feature", () => {
             cy.url().should("include", "index.php?controller=my-account");
         });
     });
+    describe(
+        "Access logged-in area by URL without authentication",
+        { testIsolation: false },
+        () => {
+            it("Given I am an unauthenticated user", () => {
+                cy.visit(LOGIN_URL);
+            });
+            it("When accessing the logged-in area by URL", () => {
+                cy.visit(LOGGED_URL);
+            });
+            it("Then I am redirected to login page", () => {
+                cy.url().should("equal", LOGIN_URL);
+            });
+        }
+    );
 });
