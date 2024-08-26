@@ -54,7 +54,7 @@ describe("Registration feature", () => {
         it("When the Email address field is filled with a valid email", () => {
             cy.get("#email_create").type(email);
         });
-        it('When the "Create an account" button is clicked', () => {
+        it('And the "Create an account" button is clicked', () => {
             cy.get("#SubmitCreate > span").click();
         });
         it("Then the additional data form is loaded", () => {
@@ -71,6 +71,33 @@ describe("Registration feature", () => {
         });
         it("Then an error message is displayed listing the required fields", () => {
             cy.get(".alert").should("exist");
+        });
+    });
+    describe("Missing required fields", { testIsolation: false }, () => {
+        it("Given I am on the additional data page", () => {
+            const email = faker.internet.email();
+            cy.startSignup(email);
+        });
+        it('When the "Register" button is clicked', () => {
+            cy.get("#submitAccount > span").click();
+        });
+        it("Then an error message is displayed listing the required fields", () => {
+            cy.get(".alert").should("exist");
+        });
+    });
+    describe.only("Invalid name", { testIsolation: false }, () => {
+        it("Given I am on the additional data page", () => {
+            const email = faker.internet.email();
+            cy.startSignup(email);
+        });
+        it("When the name field is filled with an invalid name", () => {
+            cy.get("#customer_firstname").type("n1ne");
+        });
+        it('And the "Register" button is clicked', () => {
+            cy.get("#submitAccount > span").click();
+        });
+        it("Then an error message is displayed", () => {
+            cy.contains("firstname is invalid");
         });
     });
 });
