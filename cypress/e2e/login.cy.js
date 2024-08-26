@@ -1,16 +1,12 @@
 import { faker } from "@faker-js/faker";
 
 describe("Login feature", () => {
-    const LOGIN_URL =
-        "http://www.automationpractice.pl/index.php?controller=authentication&back=my-account";
-    const LOGGED_URL =
-        "http://www.automationpractice.pl/index.php?controller=my-account";
     beforeEach(() => {
         cy.clearAllCookies();
     });
     describe("Empty email", { testIsolation: false }, () => {
         it("Given I am on the login page", () => {
-            cy.visit(LOGIN_URL);
+            cy.visit(Cypress.env("LOGIN_URL"));
         });
         it('When the "Sign in" button is clicked', () => {
             cy.get("#SubmitLogin > span").click();
@@ -21,7 +17,7 @@ describe("Login feature", () => {
     });
     describe("Invalid email", { testIsolation: false }, () => {
         it("Given I am on the login page", () => {
-            cy.visit(LOGIN_URL);
+            cy.visit(Cypress.env("LOGIN_URL"));
         });
         it("When the Email address field is filled with an invalid email", () => {
             cy.get("#email").type("lorem ipsum");
@@ -37,7 +33,7 @@ describe("Login feature", () => {
         const email = faker.internet.email();
         const password = faker.internet.password();
         it("Given I am on the login page", () => {
-            cy.visit(LOGIN_URL);
+            cy.visit(Cypress.env("LOGIN_URL"));
         });
         it("When the Email address field is filled with unregistered email", () => {
             cy.get("#email").type(email);
@@ -54,7 +50,7 @@ describe("Login feature", () => {
     });
     describe("Successful login", { testIsolation: false }, () => {
         it("Given I am on the login page", () => {
-            cy.visit(LOGIN_URL);
+            cy.visit(Cypress.env("LOGIN_URL"));
         });
         it("When the Email address field is filled correctly", () => {
             cy.get("#email").type(Cypress.env("LOGIN_EMAIL"));
@@ -74,20 +70,20 @@ describe("Login feature", () => {
         { testIsolation: false },
         () => {
             it("Given I am an unauthenticated user", () => {
-                cy.visit(LOGIN_URL);
+                cy.visit(Cypress.env("LOGIN_URL"));
             });
             it("When accessing the logged-in area by URL", () => {
-                cy.visit(LOGGED_URL);
+                cy.visit(Cypress.env("LOGGED_URL"));
             });
             it("Then I am redirected to login page", () => {
-                cy.url().should("equal", LOGIN_URL);
+                cy.url().should("equal", Cypress.env("LOGIN_URL"));
             });
         }
     );
 
     describe("Logout", { testIsolation: false }, () => {
         it("Given I am an authenticated user", () => {
-            cy.visit(LOGIN_URL);
+            cy.visit(Cypress.env("LOGIN_URL"));
             cy.get("#email").type(Cypress.env("LOGIN_EMAIL"));
             cy.get("#passwd").type(Cypress.env("LOGIN_PASSWORD"));
             cy.get("#SubmitLogin > span").click();
@@ -97,7 +93,7 @@ describe("Login feature", () => {
             cy.get(".logout").click();
         });
         it("Then I am redirected to the login page", () => {
-            cy.url().should("equal", LOGIN_URL);
+            cy.url().should("equal", Cypress.env("LOGIN_URL"));
         });
     });
 });
