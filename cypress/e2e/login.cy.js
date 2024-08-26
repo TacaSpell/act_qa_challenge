@@ -3,6 +3,9 @@ import { faker } from "@faker-js/faker";
 describe("Login feature", () => {
     const LOGIN_URL =
         "http://www.automationpractice.pl/index.php?controller=authentication&back=my-account";
+    beforeEach(() => {
+        cy.clearAllCookies();
+    });
     describe("Empty email", { testIsolation: false }, () => {
         it("Given I am on the login page", () => {
             cy.visit(LOGIN_URL);
@@ -34,10 +37,10 @@ describe("Login feature", () => {
         it("Given I am on the login page", () => {
             cy.visit(LOGIN_URL);
         });
-        it("When the Email address field is filled correctly", () => {
+        it("When the Email address field is filled with unregistered email", () => {
             cy.get("#email").type(email);
         });
-        it("and the Password field is filled correctly", () => {
+        it("and the Password field is filled", () => {
             cy.get("#passwd").type(password);
         });
         it('And the "Sign in" button is clicked', () => {
@@ -45,6 +48,23 @@ describe("Login feature", () => {
         });
         it('Then an error message is displayed: "Authentication failed"', () => {
             cy.contains("Authentication failed");
+        });
+    });
+    describe("Successful login", { testIsolation: false }, () => {
+        it("Given I am on the login page", () => {
+            cy.visit(LOGIN_URL);
+        });
+        it("When the Email address field is filled correctly", () => {
+            cy.get("#email").type(Cypress.env("LOGIN_EMAIL"));
+        });
+        it("and the Password field is filled correctly", () => {
+            cy.get("#passwd").type(Cypress.env("LOGIN_PASSWORD"));
+        });
+        it('And the "Sign in" button is clicked', () => {
+            cy.get("#SubmitLogin > span").click();
+        });
+        it("Then the user's logged-in area is loaded", () => {
+            cy.url().should("include", "index.php?controller=my-account");
         });
     });
 });
