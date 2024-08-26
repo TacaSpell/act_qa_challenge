@@ -85,7 +85,7 @@ describe("Registration feature", () => {
             cy.get(".alert").should("exist");
         });
     });
-    describe.only("Invalid name", { testIsolation: false }, () => {
+    describe("Invalid name", { testIsolation: false }, () => {
         it("Given I am on the additional data page", () => {
             const email = faker.internet.email();
             cy.startSignup(email);
@@ -98,6 +98,21 @@ describe("Registration feature", () => {
         });
         it("Then an error message is displayed", () => {
             cy.contains("firstname is invalid");
+        });
+    });
+    describe("Invalid password", { testIsolation: false }, () => {
+        it("Given I am on the additional data page", () => {
+            const email = faker.internet.email();
+            cy.startSignup(email);
+        });
+        it("When the password field is filled with an invalid password", () => {
+            cy.get("#passwd").type("0ne");
+        });
+        it('And the "Register" button is clicked', () => {
+            cy.get("#submitAccount > span").click();
+        });
+        it("Then an error message is displayed", () => {
+            cy.contains("passwd is invalid");
         });
     });
 });
