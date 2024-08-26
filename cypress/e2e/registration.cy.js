@@ -115,4 +115,25 @@ describe("Registration feature", () => {
             cy.contains("passwd is invalid");
         });
     });
+    describe("Invalid password", { testIsolation: false }, () => {
+        it("Given I am on the additional data page", () => {
+            const email = faker.internet.email();
+            cy.startSignup(email);
+        });
+        it("When all required fields are filled out correctly", () => {
+            cy.get("#customer_firstname").type("Vinoto");
+            cy.get("#customer_lastname").type("Hashnicius");
+            cy.get("#passwd").type("F1v3s");
+        });
+
+        it('And the "Register" button is clicked', () => {
+            cy.get("#submitAccount > span").click();
+        });
+        it("Then the user's logged-in area is loaded", () => {
+            cy.url().should("equal", Cypress.env("LOGGED_URL"));
+        });
+        it("And a success message of registration is displayed", () => {
+            cy.contains("Your account has been created");
+        });
+    });
 });
