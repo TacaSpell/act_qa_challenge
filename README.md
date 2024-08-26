@@ -7,9 +7,9 @@ This repository was created as a challenge for ACT and is developed witch Cypres
 - Node lts
 - git
 
-** HOW TO RUN
+## HOW TO RUN 
 ```bash
-git clone git@github.com:TacaSpell/cypresstest.git
+git clone git@github.com:TacaSpell/act_qa_challenge.git
 npm install
 npm run cy:ci (in case you want to run cypress headless)
 npm run cy:open (in case you want to run cypress with an interface)
