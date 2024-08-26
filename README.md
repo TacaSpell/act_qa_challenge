@@ -66,36 +66,36 @@ and the "Create an account" button is clicked
 Then the additional data form is loaded [http://www.automationpractice.pl/index.php?controller=authentication&back=my-account#account-creation](http://www.automationpractice.pl/index.php?controller=authentication&back=my-account#account-creation)
 
 ## MISSING REQUIRED FIELDS
-Given I am on the additional data page [http://www.automationpractice.pl/index.php?controller=authentication&back=addresses#account-creation](http://www.automationpractice.pl/index.php?controller=authentication&back=addresses#account-creation)  
+Given I am on the additional data page [http://www.automationpractice.pl/index.php?controller=authentication&back=my-account#account-creation](http://www.automationpractice.pl/index.php?controller=authentication&back=my-account#account-creation)  
 When the "Register" button is clicked  
 Then an error message is displayed listing the required fields
 
 ## INVALID NAME
-Given I am on the additional data page [http://www.automationpractice.pl/index.php?controller=authentication&back=addresses#account-creation](http://www.automationpractice.pl/index.php?controller=authentication&back=addresses#account-creation)  
+Given I am on the additional data page [http://www.automationpractice.pl/index.php?controller=authentication&back=my-account#account-creation](http://www.automationpractice.pl/index.php?controller=authentication&back=my-account#account-creation)  
 When the name field is filled with an invalid name  
 and the "Register" button is clicked  
 Then an error message is displayed: "firstname is invalid"
 
 ## INVALID EMAIL
-Given I am on the additional data page [http://www.automationpractice.pl/index.php?controller=authentication&back=addresses#account-creation](http://www.automationpractice.pl/index.php?controller=authentication&back=addresses#account-creation)  
+Given I am on the additional data page [http://www.automationpractice.pl/index.php?controller=authentication&back=my-account#account-creation](http://www.automationpractice.pl/index.php?controller=authentication&back=my-account#account-creation)  
 When the email field is filled with an existing email  
 and the "Register" button is clicked  
 Then an error message is displayed: "An account using this email address has already been registered"
 
 ## EXISTING EMAIL
-Given I am on the additional data page [http://www.automationpractice.pl/index.php?controller=authentication&back=addresses#account-creation](http://www.automationpractice.pl/index.php?controller=authentication&back=addresses#account-creation)  
+Given I am on the additional data page [http://www.automationpractice.pl/index.php?controller=authentication&back=my-account#account-creation](http://www.automationpractice.pl/index.php?controller=authentication&back=my-account#account-creation)  
 When the email field is filled with an invalid email  
 and the "Register" button is clicked  
 Then an error message is displayed: "email is invalid"
 
 ## INVALID PASSWORD
-Given I am on the additional data page [http://www.automationpractice.pl/index.php?controller=authentication&back=addresses#account-creation](http://www.automationpractice.pl/index.php?controller=authentication&back=addresses#account-creation)  
+Given I am on the additional data page [http://www.automationpractice.pl/index.php?controller=authentication&back=my-account#account-creation](http://www.automationpractice.pl/index.php?controller=authentication&back=my-account#account-creation)  
 When the password field is filled with an invalid password  
 and the "Register" button is clicked  
 Then an error message is displayed: "passwd is invalid"
 
 ## COMPLETE REGISTRATION
-Given I am on the additional data page [http://www.automationpractice.pl/index.php?controller=authentication&back=addresses#account-creation](http://www.automationpractice.pl/index.php?controller=authentication&back=addresses#account-creation)  
+Given I am on the additional data page [http://www.automationpractice.pl/index.php?controller=authentication&back=my-account#account-creation](http://www.automationpractice.pl/index.php?controller=authentication&back=my-account#account-creation)  
 When all required fields are filled out correctly  
 and the "Register" button is clicked  
 Then the user's logged-in area is loaded [http://www.automationpractice.pl/index.php?controller=my-account](http://www.automationpractice.pl/index.php?controller=my-account)  
