@@ -61,4 +61,16 @@ describe("Registration feature", () => {
             cy.url().should("equal", Cypress.env("DATA_FORM_URL"));
         });
     });
+    describe("Missing required fields", { testIsolation: false }, () => {
+        it("Given I am on the additional data page", () => {
+            const email = faker.internet.email();
+            cy.startSignup(email);
+        });
+        it('When the "Register" button is clicked', () => {
+            cy.get("#submitAccount > span").click();
+        });
+        it("Then an error message is displayed listing the required fields", () => {
+            cy.get(".alert").should("exist");
+        });
+    });
 });
