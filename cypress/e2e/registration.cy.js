@@ -1,3 +1,5 @@
+import { faker } from "@faker-js/faker";
+
 describe("Registration feature", () => {
     beforeEach(() => {
         cy.clearAllCookies();
@@ -41,6 +43,22 @@ describe("Registration feature", () => {
             cy.contains(
                 "An account using this email address has already been registered. Please enter a valid password or request a new one"
             );
+        });
+    });
+    describe("Create account", { testIsolation: false }, () => {
+        const email = faker.internet.email();
+
+        it("Given I am on the login page", () => {
+            cy.visit(Cypress.env("LOGIN_URL"));
+        });
+        it("When the Email address field is filled with a valid email", () => {
+            cy.get("#email_create").type(email);
+        });
+        it('When the "Create an account" button is clicked', () => {
+            cy.get("#SubmitCreate > span").click();
+        });
+        it("Then the additional data form is loaded", () => {
+            cy.url().should("equal", Cypress.env("DATA_FORM_URL"));
         });
     });
 });

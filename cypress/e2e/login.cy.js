@@ -32,6 +32,7 @@ describe("Login feature", () => {
     describe("Authentication failure", { testIsolation: false }, () => {
         const email = faker.internet.email();
         const password = faker.internet.password();
+        
         it("Given I am on the login page", () => {
             cy.visit(Cypress.env("LOGIN_URL"));
         });

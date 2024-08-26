@@ -13,5 +13,7 @@ module.exports = defineConfig({
             "http://www.automationpractice.pl/index.php?controller=authentication&back=my-account",
         LOGGED_URL:
             "http://www.automationpractice.pl/index.php?controller=my-account",
+        DATA_FORM_URL:
+            "http://www.automationpractice.pl/index.php?controller=authentication&back=my-account#account-creation",
     },
 });
