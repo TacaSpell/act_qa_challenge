@@ -10,7 +10,12 @@
 //
 //
 // -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
+Cypress.Commands.add('startSignup', (email) => { 
+    cy.visit(Cypress.env("LOGIN_URL"));
+    cy.get("#email_create").type(email);
+    cy.get("#SubmitCreate > span").click();
+    cy.url().should("equal", Cypress.env("DATA_FORM_URL"));
+ })
 //
 //
 // -- This is a child command --
